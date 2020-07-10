@@ -1,11 +1,18 @@
 import React, { useState } from 'react'
 
+const RegQ1 = /^[58]{1,4}$/
+
 const Question1 = () => {
   const [input, setInput] = useState('')
   const [answer, setAnswer] = useState('')
+  const [error, setError] = useState(false)
   const handleChange = (e) => {
     let { value } = e.target
-    setInput(value)
+    if (RegQ1.test(value)) {
+      setInput(value)
+      setError(false)
+    } else
+      setError(true)
   }
 
   const maximum58Number = (value) => {
@@ -21,6 +28,9 @@ const Question1 = () => {
         <input value={input} onChange={handleChange} />
         <button onClick={() => maximum58Number(input)}>submit</button>
       </div>
+      {
+        error && <span>please enter only 5 or 8 digits and value between 1 - 10000</span>
+      }
       <div>
         <span>output: </span>
         <span>{answer}</span>
