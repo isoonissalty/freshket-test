@@ -12,16 +12,21 @@ const Question2 = () => {
   const longSubStr = (value) => {
     let maxLen = 0
     let temp = ''
+    let ans = ''
     for (let i = 0; i < value.length; i++) {
       if (temp.indexOf(value[i]) === -1) {
         temp = temp + value[i]
 
-        if (maxLen < temp.length) maxLen = temp.length
+        if (maxLen < temp.length) {
+          maxLen = temp.length
+          ans = temp
+        }
       
       } else {
-        temp = ''
+        temp = value[i]
       }
     }
+    console.log(ans)
     setAnswer(maxLen)
   }
 
