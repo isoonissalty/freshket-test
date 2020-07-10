@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 
-const RegQ1 = /^[58]{1,4}$/
+const RegQ1 = /^[58]{0,4}$/
 
 const Question1 = () => {
   const [input, setInput] = useState('')
   const [answer, setAnswer] = useState('')
   const [error, setError] = useState(false)
+
   const handleChange = (e) => {
     let { value } = e.target
     if (RegQ1.test(value)) {
@@ -18,6 +19,7 @@ const Question1 = () => {
   const maximum58Number = (value) => {
     let temp = value
     setAnswer(temp.replace('5', '8'))
+    setError(false)
   }
 
   return (
